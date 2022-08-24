@@ -1,116 +1,88 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
-
-let contact = {};
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
     filter: '',
   };
 
-  // collectContact = (e) => {
-  //   // e.preventDefault();
-  //   console.log("submit");
-  //   const {
-  //     elements: { name, number }
-  //   } = e.currentTarget;
-  //   console.log(name.value, number.value);
-  //   // e.currentTarget.reset();
-
-  //   contact = { name: name.value, number: name.number, id: nanoid() }
-  // };
-
-  // addContact = (e) => {
-  //     e.preventDefault();
-  //  this.setState(prevState => ({
-  //     contacts: [contact, ...prevState.contacts],
-  //  }));
-  //   e.currentTarget.reset();
-  //   console.log(this.state);
-  // };
-
   addContact = e => {
     e.preventDefault();
-    console.log('submit');
+    const { contacts } = this.state;
+
     const {
       elements: { name, number },
     } = e.currentTarget;
-    console.log(name.value, number.value);
-    const contact = {
+
+    let addedContact = {
       name: name.value,
       number: number.value,
       id: nanoid(),
     };
+
+    let isAdded = false;
+
+    contacts.map(contact => {
+      if (contact.name === name.value) {
+        alert(`${name.value} is already in contacts`);
+        return (isAdded = true);
+      }
+    });
+
     e.currentTarget.reset();
 
+    if (!isAdded) {
+      this.setState(prevState => ({
+        contacts: [addedContact, ...prevState.contacts],
+      }));
+    }
+  };
+
+  findContact = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+
+  renderContacts = () => {
+    const { contacts, filter } = this.state;
+    let filtered = contacts;
+    if (filter.toLowerCase()) {
+      filtered = contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter)
+      );
+    }
+    return filtered;
+  };
+
+  deleteContact = id => {
+    console.log(id);
     this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
-    console.log(this.state);
   };
 
   render() {
-    const { contacts, filter, name, number } = this.state;
+    const { contacts, filter } = this.state;
     return (
       <>
         <h1>Phonebook</h1>
         <ContactForm addContact={this.addContact} />
+
+        <h2>Contacts</h2>
+        <Filter findContact={this.findContact} />
+        <ContactList
+          contacts={this.renderContacts()}
+          deleteContact={this.deleteContact}
+        />
       </>
     );
   }
 }
-
-// export class App extends Component {
-//   state = {
-//     good: 0,
-//     neutral: 0,
-//     bad: 0,
-//   };
-
-//   addFeedback = id => {
-//     this.setState(() => ({
-//       [id]: this.state[id] + 1,
-//     }));
-//   };
-
-//   countTotalFeedback = () => {
-//     const { good, neutral, bad } = this.state;
-//     let total = good + neutral + bad;
-//     return total;
-//   };
-
-//   countPositiveFeedbackPercentage = () => {
-//     const { good } = this.state;
-//     let positiveFeedbackPercentage = (good / this.countTotalFeedback()) * 100;
-//     return positiveFeedbackPercentage;
-//   };
-
-//   render() {
-//     const { good, neutral, bad } = this.state;
-//     return (
-//       <>
-//         <Section title="Please leave feedback">
-//           <FeedbackOptions
-//             options={Object.keys(this.state)}
-//             onLeaveFeedback={this.addFeedback}
-//           />
-//         </Section>
-//         <Section title="Statistics">
-//           {!this.countTotalFeedback() ? (
-//             <Notification message="There is no feedback" />
-//           ) : (
-//             <Statistics
-//               good={good}
-//               neutral={neutral}
-//               bad={bad}
-//               total={this.countTotalFeedback()}
-//               positivePercentage={this.countPositiveFeedbackPercentage()}
-//             />
-//           )}
-//         </Section>
-//       </>
-//     );
-//   }
-// }

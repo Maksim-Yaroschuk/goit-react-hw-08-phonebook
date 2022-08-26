@@ -1,12 +1,13 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class ContactForm extends Component {
   render() {
     const { addContact } = this.props;
     return (
-      <form onSubmit={addContact}>
-        <label>
-          <h2>Name</h2>
+      <form className='section' onSubmit={addContact}>
+        <label className='block'>
+          <p className='inputName'>Name</p>
           <input
             type="text"
             name="name"
@@ -15,7 +16,7 @@ export class ContactForm extends Component {
             required
           />
 
-          <h2>Number</h2>
+          <p className='inputName'>Number</p>
           <input
             type="tel"
             name="number"
@@ -25,8 +26,12 @@ export class ContactForm extends Component {
           />
         </label>
 
-        <button type="submit">Add contact</button>
+        <button className='button' type="submit">Add contact</button>
       </form>
     );
   }
 }
+
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+};

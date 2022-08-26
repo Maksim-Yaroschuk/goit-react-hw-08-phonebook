@@ -35,8 +35,8 @@ export class App extends Component {
     contacts.map(contact => {
       if (contact.name === name.value) {
         alert(`${name.value} is already in contacts`);
-        return (isAdded = true);
-      }
+        return isAdded = true;
+      }; return isAdded
     });
 
     e.currentTarget.reset();
@@ -64,7 +64,6 @@ export class App extends Component {
   };
 
   deleteContact = id => {
-    console.log(id);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));

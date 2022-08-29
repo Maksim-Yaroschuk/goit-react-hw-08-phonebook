@@ -16,7 +16,6 @@ export class ContactForm extends Component {
   render() {
     const { addContact } = this.props;
     const { name, number } = this.state;
-    console.log(this.state);
     return (
       <form className="section" onSubmit={addContact}>
         <label className="block">

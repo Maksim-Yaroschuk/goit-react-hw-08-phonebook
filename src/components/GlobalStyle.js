@@ -22,11 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
-.contactsHeader {
-  margin-top: 16px;
-}
-
-.button {
+  button {
   margin-top: 8px;
   padding: 8px 24px;
   border: 0;
@@ -35,35 +31,20 @@ export const GlobalStyle = createGlobalStyle`
   font-weight: 500;
   font-family: inherit;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
+  }
 
-.button:hover,
-.button:focus {
+  button:hover,
+  button:focus {
   background-color: #1976d2;
   color: #fff;
-}
+  }
 
-.buttonList {
-  margin-left: 8px;
-}
-
-.block {
-  display: block;
-}
-
-.section {
-  border: 1px solid;
-  width: 205px;
-  padding: 8px;
+.contactsHeader {
+  margin-top: 16px;
 }
 
 .inputName {
   margin-top: 8px;
   margin-bottom: 4px;
-}
-
-.listItem {
-  font-size: 18px;
-  display: inline-flex;
 }
 `;

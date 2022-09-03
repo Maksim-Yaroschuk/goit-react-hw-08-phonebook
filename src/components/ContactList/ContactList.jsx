@@ -2,14 +2,23 @@ import PropTypes from 'prop-types';
 import { ContactListItem } from './ContactListItem';
 
 export const ContactList = ({ contacts, deleteContact }) => {
-  return (
-    <ul>
-      {contacts.map(({ id, name, number }) => {
-        return (
-          <ContactListItem id={id} name={name} number={number} deleteContact={deleteContact} key={id} />
-        );
-      })}
-    </ul>
+  return ( 
+    <>
+      {!contacts.length && (<p className="inputName">Your contactlist is  empty</p>)}
+      <ul>
+        {contacts.map(({ id, name, number }) => {
+          return (
+            <ContactListItem
+              id={id}
+              name={name}
+              number={number}
+              deleteContact={deleteContact}
+              key={id}
+            />
+          );
+        })}
+      </ul>
+    </>
   );
 };
 

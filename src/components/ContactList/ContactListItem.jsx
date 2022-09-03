@@ -1,20 +1,22 @@
 import PropTypes from 'prop-types';
+import css from './ContactList.module.css';
 
 export const ContactListItem = ({ id, name, number, deleteContact }) => {
-   return (
+  return (
     <li key={id}>
-    <p className="listItem">
-      {name} - {number}
-    </p>
-    <button
-      className="button buttonList"
-      type="button"
-      onClick={() => deleteContact(id)}
-    >
-      Delete
-    </button>
-      </li>
-)};
+      <p className={css.listItem}>
+        {name} - {number}
+      </p>
+      <button
+        className={css.buttonList}
+        type="button"
+        onClick={() => deleteContact(id)}
+      >
+        Delete
+      </button>
+    </li>
+  );
+};
 
 ContactListItem.propType = {
   id: PropTypes.string.isRequired,

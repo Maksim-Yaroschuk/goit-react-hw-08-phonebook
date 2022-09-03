@@ -1,0 +1,9 @@
+.block {
+  display: block;
+}
+
+.section {
+  border: 1px solid;
+  width: 205px;
+  padding: 8px;
+}

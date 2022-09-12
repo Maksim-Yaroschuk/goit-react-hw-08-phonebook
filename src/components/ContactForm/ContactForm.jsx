@@ -1,14 +1,8 @@
-import { Component } from 'react';
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
-export class ContactForm extends Component {
-  static defaultProps = {
-    addContact: PropTypes.func.isRequired,
-  };
+export const ContactForm = ({ addContact }) => {
 
-  render() {
-    const { addContact } = this.props;
     return (
       <form className={css.section} onSubmit={addContact}>
         <label className={css.block}>
@@ -35,4 +29,7 @@ export class ContactForm extends Component {
       </form>
     );
   }
-}
+
+ContactForm.propType = {
+  addContact: PropTypes.func.isRequired,
+};

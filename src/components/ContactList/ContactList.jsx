@@ -1,11 +1,14 @@
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { getItems } from 'redux/selectors';
 import { ContactListItem } from './ContactListItem';
 
-export const ContactList = ({ contacts, deleteContact }) => {
-  return ( 
+export const ContactList = () => {
+  const contacts = useSelector(getItems);
+  return (
     <>
-      {!contacts.length && (<p className="inputName">Your contactlist is  empty</p>)}
+      {!contacts.length && (
+        <p className="inputName">Your contactlist is empty</p>
+      )}
       <ul>
         {contacts.map(({ id, name, number }) => {
           return (
@@ -13,7 +16,6 @@ export const ContactList = ({ contacts, deleteContact }) => {
               id={id}
               name={name}
               number={number}
-              deleteContact={deleteContact}
               key={id}
             />
           );
@@ -21,15 +23,4 @@ export const ContactList = ({ contacts, deleteContact }) => {
       </ul>
     </>
   );
-};
-
-ContactList.propType = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }).isRequired
-  ),
-  deleteContact: PropTypes.func.isRequired,
 };

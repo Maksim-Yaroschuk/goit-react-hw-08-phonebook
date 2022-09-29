@@ -1,6 +1,6 @@
 import css from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
-import { addItem } from 'redux/reducer';
+import { addItem } from 'redux/itemsSlice';
 import { nanoid } from 'nanoid';
 
 export const ContactForm = () => {

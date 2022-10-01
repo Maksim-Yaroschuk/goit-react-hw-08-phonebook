@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setSearchValue } from 'redux/searchSlice';
 
-export const Filter = ({ findContact }) => {
+export const Filter = () => {
   const dispatch = useDispatch();
   const handleSearch = e => {
     dispatch(setSearchValue(e.currentTarget.value));
@@ -14,8 +13,4 @@ export const Filter = ({ findContact }) => {
       <input type="text" onChange={handleSearch} />
     </label>
   );
-};
-
-Filter.propType = {
-  findContact: PropTypes.func.isRequired,
 };

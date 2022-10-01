@@ -3,20 +3,31 @@ import { useDispatch } from 'react-redux';
 import { addItem } from 'redux/itemsSlice';
 import { nanoid } from 'nanoid';
 
-export const ContactForm = () => {
+export const ContactForm = ({ contacts }) => {
   const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
+    let isAdded = false;
     const {
       elements: { name, number },
     } = e.currentTarget;
 
-    const addedContact = {
-      name: name.value,
-      number: number.value,
-      id: nanoid(),
-    };
-    dispatch(addItem(addedContact));
+    contacts.map(contact => {
+      if (contact.name === name.value) {
+        alert(`${name.value} is already in contacts`);
+        return (isAdded = true);
+      }
+      return isAdded;
+    });
+
+    if (!isAdded) {
+      const addedContact = {
+        name: name.value,
+        number: number.value,
+        id: nanoid(),
+      };
+      dispatch(addItem(addedContact));
+    }
     e.currentTarget.reset();
   };
 

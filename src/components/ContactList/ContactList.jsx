@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux';
-import { getItems, getSearchValue } from 'redux/selectors';
+import { getSearchValue } from 'redux/selectors';
 import { ContactListItem } from './ContactListItem';
 
-export const ContactList = () => {
-  const contacts = useSelector(getItems);
+export const ContactList = ({ contacts }) => {
   const filter = useSelector(getSearchValue);
   let filteredContacts = contacts;
 
@@ -17,6 +16,9 @@ export const ContactList = () => {
     <>
       {!contacts.length && (
         <p className="inputName">Your contactlist is empty</p>
+      )}
+      {!filteredContacts.length && (
+        <p className="inputName">No contacts found</p>
       )}
       <ul>
         {filteredContacts.map(({ id, name, number }) => {

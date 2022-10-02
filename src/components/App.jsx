@@ -17,7 +17,6 @@ export const App = () => {
 
   return (
     <div>
-      {/* {error && <p className="inputName">{error}</p>} */}
       <h1>Phonebook</h1>
       <ContactForm contacts={contacts} />
       <h2 className="contactsHeader">Contacts</h2>

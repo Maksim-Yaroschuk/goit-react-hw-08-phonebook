@@ -42,5 +42,5 @@ ContactList.propType = {
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
   }),
-  // error: PropTypes.string,
+  error: PropTypes.string,
 };

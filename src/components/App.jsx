@@ -3,13 +3,13 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { GlobalStyle } from './GlobalStyle';
-import { getItems } from 'redux/selectors';
+import { selectItems } from 'redux/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { contacts, isLoading, error } = useSelector(getItems);
+  const { contacts, isLoading, error } = useSelector(selectItems);
 
   useEffect(() => {
     dispatch(fetchContacts());

@@ -1,6 +1,7 @@
 import css from './ContactForm.module.css';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { addItem } from 'redux/itemsSlice';
+import { addContact } from 'redux/operations';
 import { nanoid } from 'nanoid';
 
 export const ContactForm = ({ contacts }) => {
@@ -26,7 +27,7 @@ export const ContactForm = ({ contacts }) => {
         number: number.value,
         id: nanoid(),
       };
-      dispatch(addItem(addedContact));
+      dispatch(addContact(addedContact));
     }
     e.currentTarget.reset();
   };
@@ -58,4 +59,12 @@ export const ContactForm = ({ contacts }) => {
       </button>
     </form>
   );
+};
+
+ContactForm.propType = {
+  contacts: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }),
 };

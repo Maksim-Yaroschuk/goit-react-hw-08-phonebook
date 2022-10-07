@@ -6,7 +6,7 @@ import { selectItems } from 'redux/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 
-export const Contacts = () => {
+export default function Contacts () {
   const dispatch = useDispatch();
   const { contacts, isLoading, error } = useSelector(selectItems);
 

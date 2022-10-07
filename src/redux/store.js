@@ -1,51 +1,51 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import { itemsReducer } from './itemsSlice';
 import { searchReducer } from './searchSlice';
+import { authReducer } from './auth/slice';
+
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+];
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 export const store = configureStore({
   reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
     items: itemsReducer,
     searchValue: searchReducer,
   },
+  middleware,
+  devTools: process.env.NODE_ENV === 'development',
 });
 
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
-// import { itemsReducer } from './itemsSlice';
-// import { searchReducer } from './searchSlice';
+export const persistor = persistStore(store);
 
-// const rootReducer = combineReducers({
-//   items: itemsReducer,
-//   searchValue: searchReducer,
-// });
-
-// const persistConfig = {
-//   key: 'root',
-//   storage,
-//   blacklist: ['searchValue']
-// };
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // export const store = configureStore({
-//   reducer: persistedReducer,
-//   middleware: getDefaultMiddleware =>
-//     getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     }),
+//   reducer: {
+//     items: itemsReducer,
+//     searchValue: searchReducer,
+//   },
 // });
 
-// export const persistor = persistStore(store);
-
-// export default store;

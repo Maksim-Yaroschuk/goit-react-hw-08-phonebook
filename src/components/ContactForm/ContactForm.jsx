@@ -1,7 +1,7 @@
 import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { nanoid } from 'nanoid';
 
 export const ContactForm = ({ contacts }) => {

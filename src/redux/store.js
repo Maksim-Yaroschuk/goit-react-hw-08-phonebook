@@ -11,8 +11,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { itemsReducer } from './itemsSlice';
-import { searchReducer } from './searchSlice';
+import { itemsReducer } from './contacts/itemsSlice';
+import { searchReducer } from './contacts/searchSlice';
 import { authReducer } from './auth/slice';
 
 const middleware = [

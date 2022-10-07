@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { selectSearchValue } from 'redux/selectors';
+import { selectSearchValue } from 'redux/contacts/selectors';
 import { ContactListItem } from './ContactListItem';
 
 export const ContactList = ({ contacts, error }) => {

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setSearchValue } from 'redux/searchSlice';
+import { setSearchValue } from 'redux/contacts/searchSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();

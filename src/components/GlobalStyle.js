@@ -39,26 +39,6 @@ export const GlobalStyle = createGlobalStyle`
   background-color: #1976d2;
   color: #fff;
   }
-
-.contactsHeader {
-  margin-top: 24px;
-  margin-bottom: 8px;
-}
-
-/* .inputName {
-  margin-top: 8px;
-  margin-bottom: 4px;
-} */
-
-/* .form {
-    width: 320px;
-} */
-
-/* .label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 16px;
-} */
 `;
 
 export const NavigationLink = styled(NavLink)`
@@ -92,4 +72,9 @@ export const Message = styled.p`
 export const Form = styled.form`
   width: 320px;
   padding: 8px;
+`;
+
+export const ContactsHeader = styled.h2`
+  margin-top: 24px;
+  margin-bottom: 8px;
 `;

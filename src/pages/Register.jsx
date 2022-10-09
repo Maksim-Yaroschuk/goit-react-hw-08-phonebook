@@ -6,8 +6,8 @@ export default function Register() {
     <div>
       <Helmet>
         <title>Register</title>
-          </Helmet>
-          <RegistredForm/>
+      </Helmet>
+      <RegistredForm />
     </div>
   );
 }

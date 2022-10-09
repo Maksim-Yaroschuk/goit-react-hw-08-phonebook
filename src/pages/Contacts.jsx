@@ -5,8 +5,10 @@ import { Filter } from 'components/Filter/Filter';
 import { selectItems } from 'redux/contacts/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
+import { ContactsHeader, Message } from 'components/GlobalStyle';
+import { Helmet } from 'react-helmet';
 
-export default function Contacts () {
+export default function Contacts() {
   const dispatch = useDispatch();
   const { contacts, isLoading, error } = useSelector(selectItems);
 
@@ -16,12 +18,15 @@ export default function Contacts () {
 
   return (
     <main>
+      <Helmet>
+        <title>Contacts</title>
+      </Helmet>
       <h1>Phonebook</h1>
       <ContactForm contacts={contacts} />
-      <h2 className="contactsHeader">Contacts</h2>
+      <ContactsHeader>Contacts</ContactsHeader>
       <Filter />
-      {isLoading && <p className="inputName">Loading contacts...</p>}
+      {isLoading && <Message>Loading contacts...</Message>}
       <ContactList contacts={contacts} error={error} />{' '}
     </main>
   );
-};
+}

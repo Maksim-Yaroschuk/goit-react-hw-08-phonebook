@@ -40,11 +40,22 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 .contactsHeader {
-  margin-top: 16px;
+  margin-top: 24px;
+  margin-bottom: 8px;
 }
 
 .inputName {
   margin-top: 8px;
   margin-bottom: 4px;
+}
+
+.form {
+    width: 320px;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
 }
 `;

@@ -34,8 +34,8 @@ export const ContactForm = ({ contacts }) => {
 
   return (
     <form className={css.section} onSubmit={handleSubmit}>
-      <label className={css.block}>
-        <p className="inputName">Name</p>
+      <label className="label">
+        Name
         <input
           type="text"
           name="name"
@@ -43,8 +43,9 @@ export const ContactForm = ({ contacts }) => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-
-        <p className="inputName">Number</p>
+      </label>
+      <label className="label">
+        Number
         <input
           type="tel"
           name="number"

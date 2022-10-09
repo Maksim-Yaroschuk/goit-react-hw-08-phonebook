@@ -8,9 +8,9 @@ export const Filter = () => {
   };
 
   return (
-    <label>
-      <p className="inputName">Find contacts by name</p>
-      <input type="text" onChange={handleSearch} />
+    <label className="label">
+      Find contacts by name
+      <input className="form" type="text" onChange={handleSearch} />
     </label>
   );
 };

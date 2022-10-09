@@ -1,14 +1,14 @@
-import { AuthNavLink } from './AuthNav.styled.';
+import { NavigationLink } from 'components/GlobalStyle';
 
 export const AuthNav = () => {
   return (
     <div>
-      <AuthNavLink to="/register">
+      <NavigationLink to="/register">
         Register
-      </AuthNavLink>
-      <AuthNavLink to="/login">
+      </NavigationLink>
+      <NavigationLink to="/login">
         Log In
-      </AuthNavLink>
+      </NavigationLink>
     </div>
   );
 };

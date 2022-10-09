@@ -1,3 +1,4 @@
+import { Message } from 'components/GlobalStyle';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { selectSearchValue } from 'redux/contacts/selectors';
@@ -17,13 +18,13 @@ export const ContactList = ({ contacts, error }) => {
   return (
     <>
       {!contacts.length && !error && (
-        <p className="inputName">Your contactlist is empty</p>
+        <Message>Your contact list is empty</Message>
       )}
       {error && (
-        <p className="inputName">{error}</p>
+        <Message>{error}</Message>
       )}
       {!filteredContacts.length && Boolean(contacts.length) && (
-        <p className="inputName">No contacts found</p>
+        <Message>No contacts found</Message>
       )}
       <ul>
         {filteredContacts.map(({ id, name, number }) => {

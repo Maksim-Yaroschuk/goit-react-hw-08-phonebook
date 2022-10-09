@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
@@ -44,18 +45,51 @@ export const GlobalStyle = createGlobalStyle`
   margin-bottom: 8px;
 }
 
-.inputName {
+/* .inputName {
   margin-top: 8px;
   margin-bottom: 4px;
-}
+} */
 
-.form {
+/* .form {
     width: 320px;
-}
+} */
 
-.label {
+/* .label {
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
-}
+} */
+`;
+
+export const NavigationLink = styled(NavLink)`
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+  color: #2a363b;
+  &:hover,
+  &:focus {
+    color: white;
+    background-color: #1976d2;
+  }
+  &.active {
+    color: white;
+    background-color: #1976d2;
+  }
+`;
+
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+`;
+
+export const Message = styled.p`
+  margin-top: 16px;
+  font-weight: 700;
+`;
+
+export const Form = styled.form`
+  width: 320px;
+  padding: 8px;
 `;
